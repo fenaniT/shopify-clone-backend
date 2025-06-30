@@ -6,7 +6,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://192.168.1.4:3000'],
+    'allowed_origins' =>  ['http://localhost:3000', 'https://shopify-clone-orpin.vercel.app'],
     
     'allowed_origins_patterns' => [],
 
