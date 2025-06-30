@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,6 +8,9 @@ Route::get('/', function () {
 });
 Route::get('/user', function (Request $request) {
     return $request->user();
+});
+Route::middleware(['web'])->group(function () {
+    Route::post('/login', [RegisteredUserController::class, 'login']);
 });
 
 require __DIR__.'/auth.php';
