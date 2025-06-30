@@ -30,5 +30,10 @@ RUN chown -R www-data:www-data /var/www/html \
 # Expose port 80
 EXPOSE 80
 
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+# Update Apache config to use the public folder as the web root
+RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
 # Start Apache in foreground
 CMD ["apache2-foreground"]  
