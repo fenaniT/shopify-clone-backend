@@ -86,7 +86,12 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         Auth::login($user);
-        return response()->json(['message' => 'User registered successfully'], 201);
+        // return response()->json(['message' => 'User registered successfully'], 201);
+        return response()->json([
+            'message' => 'User registered successfully',
+            'referral_link' => "https://shopify-clone-orpin.vercel.app/register?ref={$user->invitation_code}"
+        ], 201);
+
     }
 
 
